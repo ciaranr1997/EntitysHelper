@@ -31,7 +31,7 @@ module.exports = class ShrineCommand extends Command {
 };
 async function getDetails(obj,message)
 {
-	details =
+	var details =
 	{
 		"refreshes":Object.keys(obj)[0],
 		"perk":obj[Object.keys(obj)[0]],
@@ -59,6 +59,5 @@ async function getDetails(obj,message)
 		inline:true
 	});
 	message.channel.send(embed);
-
 
 }
