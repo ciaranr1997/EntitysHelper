@@ -10,7 +10,7 @@ const path = require('path');
 const client = new CommandoClient({
 	commandPrefix: '!',
 	owner: '187262396237217792',
-	unknownCommandResponse: false
+	unknownCommandResponse: false,
 });
 
 
@@ -23,7 +23,7 @@ client.registry
 
 	])
 	.registerDefaultGroups()
-	.registerDefaultCommands()
+	.registerDefaultCommands({unknownCommand: false})
 	.registerCommandsIn(path.join(__dirname, 'commands'));
 
 
