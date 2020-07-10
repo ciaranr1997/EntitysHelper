@@ -13,6 +13,10 @@ module.exports = class ShrineCommand extends Command {
 			group: 'shrine',
 			memberName: 'shrine',
 			description: 'Get the current shrine',
+			throttling: {
+        usages: 2,
+        duration: 60
+	    },
 		});
 	}
 	async run(message) {
