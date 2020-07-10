@@ -2,6 +2,7 @@ const { Command } = require('discord.js-commando');
 const axios = require("axios");
 const scraper = require('table-scraper')
 const config = require("../../config.json");
+const Discord = require('discord.js');
 
 let sql = require("../../sql.js");
 sql.connect();
@@ -39,26 +40,25 @@ async function getDetails(obj,message)
 	};
 
 	rows = await sql.syncQuery("select * from dbd_perks WHERE perk_name LIKE '%"+details.perk+"%'");
-	details.description = rows[0].description;
+	details.description = rows[0].description.replace(/"/g,"_");
 	details.levelAvailable = rows[0].levelavailable;
-	var embed = {
-		"embed": {
-			"title": details.perk,
-			"description": details.description,
-			"color": 980195,
-			"fields": [
-				{
-					"name": "From",
-					"value": details.character,
-					inline:true
-				},
-				{
-					"name": "Level",
-					"value": details.levelAvailable,
-					inline:true
-				},
-			]
-		}
-	}
-	message.say(embed);
+	details.image = rows[0].icon;
+	var embed = new Discord.MessageEmbed ()
+	.setTitle(details.perk)
+	.setDescription(details.description)
+	.attachFiles([{name: "image.png", attachment:'./icons/'+details.image}])
+	.setThumbnail('attachment://image.png')
+	.addFields({
+		"name": "From",
+		"value": details.character,
+		inline:true
+	},
+	{
+		"name": "Level",
+		"value": details.levelAvailable,
+		inline:true
+	});
+	message.channel.send(embed);
+
+
 }
