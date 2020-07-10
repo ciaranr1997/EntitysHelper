@@ -9,7 +9,8 @@ const path = require('path');
 
 const client = new CommandoClient({
 	commandPrefix: '!',
-	owner: '187262396237217792'
+	owner: '187262396237217792',
+	unknownCommandResponse: false
 });
 
 
@@ -30,5 +31,5 @@ client.registry
 client.login(config.token);
 client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
-	client.user.setActivity('with Commando');
+	client.user.setActivity('Dead By Daylight');
 });
