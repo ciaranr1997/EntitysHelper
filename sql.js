@@ -42,11 +42,11 @@ module.exports = {
             }
         });
     },
-		syncQuery:function(queryString)
+		syncQuery:function(queryString,params)
 		{
 			db = this.db
 				return new Promise(function(resolve, reject){
-        	db.query(queryString, [], (err, rows) => {
+        	db.query(queryString, params, (err, rows) => {
 	          if (err) {
 							console.log("ERROR");
 	            console.log(err);
