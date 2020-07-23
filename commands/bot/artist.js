@@ -20,7 +20,9 @@ module.exports = class ArtistCommand extends Command {
 	async run(message) {
 		utils.userById(config.artist,message).then(function(artist)
 		{
-			message.reply("The artist who created the logo for this bot is "+artist);
+			message.reply("The artist who created the logo for this bot is "+artist).catch((error) => {
+
+			});
 		});
 	}
 };

@@ -25,7 +25,6 @@ module.exports = class PerkCommand extends Command {
 			message.reply("Please provide a perk name");
 			return;
 		}
-		console.log(perk);
 		getDetails(perk,message);
 	}
 };
@@ -62,7 +61,9 @@ async function getDetails(perk,message)
 				inline:true
 			});
 		}
-		message.channel.send(embed);
+		message.channel.send(embed).catch((error) => {
+
+		});
 	}
 
 }

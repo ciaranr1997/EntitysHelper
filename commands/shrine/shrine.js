@@ -63,6 +63,8 @@ async function getDetails(obj,message)
 		"value": details.levelAvailable,
 		inline:true
 	});
-	message.channel.send(embed);
+	message.channel.send(embed).catch((error) => {
+
+	});;
 
 }

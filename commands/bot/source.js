@@ -18,6 +18,8 @@ module.exports = class SourceCommand extends Command {
 		});
 	}
 	async run(message) {
-		message.reply("If you would like to see the source code for this bot it is available at:\n https://github.com/ciaranr1997/EntitysHelper");
+		message.reply("If you would like to see the source code for this bot it is available at:\n https://github.com/ciaranr1997/EntitysHelper").catch((error) => {
+
+		});
 	}
 };

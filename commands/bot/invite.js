@@ -17,6 +17,8 @@ module.exports = class InviteCommand extends Command {
 		});
 	}
 	async run(message) {
-		message.reply("If you would like this bot in your server you can invite it via: \n\nhttps://discord.com/oauth2/authorize?client_id=730869461006942360&permissions=379904&scope=bot\n\n(Please note you need admin to do this)");
+		message.reply("If you would like this bot in your server you can invite it via: \n\nhttps://discord.com/oauth2/authorize?client_id=730869461006942360&permissions=379904&scope=bot\n\n(Please note you need admin to do this)").catch((error) => {
+
+		});
 	}
 };
