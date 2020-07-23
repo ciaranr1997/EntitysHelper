@@ -58,7 +58,7 @@ module.exports = class KillerCommand extends Command {
 		},
 		{
 			"name":"Perks",
-			"value":perks[0].perk_name+","+perks[1].perk_name+","+perks[2].perk_name+","
+			"value":perks[0].perk_name+","+perks[1].perk_name+","+perks[2].perk_name+""
 		});
 		message.channel.send(embed).catch((error) => {
 			message.author.send(embed).catch();
