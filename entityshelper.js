@@ -19,7 +19,8 @@ client.registry
 	.registerGroups([
 		['shrine', 'Shrine Related Commands'],
 		['perk', 'Perk Related Commands'],
-		['killer', 'Killer Related Commands']
+		['killer', 'Killer Related Commands'],
+		['bot', 'Information about the bot']
 
 	])
 	.registerDefaultGroups()
