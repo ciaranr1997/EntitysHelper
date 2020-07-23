@@ -35,18 +35,19 @@ module.exports = class ShrineCommand extends Command {
 };
 async function getDetails(obj,message)
 {
+	console.log(obj);
 	var details =
 	{
 		"refreshes":Object.keys(obj)[0],
 		"perk":obj[Object.keys(obj)[0]],
-		"cost":Object.keys(obj)[1].replace("_4",""),
-		"character":obj[Object.keys(obj)[1]]
+		"cost":Object.keys(obj)[1].replace("_4","")
 	};
 
 	rows = await sql.syncQuery("select * from dbd_perks WHERE perk_name LIKE '%"+details.perk+"%'");
 	details.description = rows[0].description.replace(/"/g,"_");
 	details.levelAvailable = rows[0].levelavailable;
 	details.image = rows[0].icon;
+	details.character = rows[0].owner;
 	var embed = new Discord.MessageEmbed ()
 	.setTitle(details.perk)
 	.setDescription(details.description)
