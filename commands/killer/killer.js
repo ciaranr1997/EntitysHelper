@@ -26,7 +26,6 @@ module.exports = class KillerCommand extends Command {
 			return;
 		}
 		let rows = await sql.syncQuery("select * from dbd_killers WHERE killer_name LIKE ? OR known_as LIKE ?",["%"+killer+"%","%"+killer+"%"]);
-		let perks = await sql.syncQuery("select * from dbd_perks WHERE owner LIKE ?",["%"+rows[0].killer_name+"%"]);
 
 
 		if(rows.length==0)
@@ -34,6 +33,7 @@ module.exports = class KillerCommand extends Command {
 			message.reply("Sorry, I couldn't find that killer");
 			return;
 		}
+		let perks = await sql.syncQuery("select * from dbd_perks WHERE owner LIKE ?",["%"+rows[0].killer_name+"%"]);
 		var desc = rows[0].killer_desc;
 		if(desc.length>1000)
 		{
