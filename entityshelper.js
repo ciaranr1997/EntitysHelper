@@ -34,3 +34,21 @@ client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
 	client.user.setActivity('Dead By Daylight');
 });
+
+//do some stuff when the bot joins a server
+client.on('guildCreate', async guild => {
+	user = await client.users.fetch(config.owner);
+
+	user.send("The bot has joined the server \""+guild.name+"\"\nThe server is owned by "+guild.owner.user.username+"#"+guild.owner.user.discriminator);
+
+	//send a welcome message to the first channel I can speak in
+	let defaultChannel = "";
+	guild.channels.cache.forEach((channel) => {
+	  if(channel.type == "text" && defaultChannel == "") {
+	    if(channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
+	      defaultChannel = channel;
+	    }
+	  }
+	});
+	defaultChannel.send("Hi there!\nThanks for inviting me to your server. \n\nIf you would like to see the commands available type "+client.commandPrefix+"help at any time");
+});
