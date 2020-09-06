@@ -22,7 +22,19 @@ module.exports = class ShrineCommand extends Command {
 	async run(message) {
 		scraper.get(config.url).then(async function(data)
 		{
-			var shrinetable = data[0];
+			var shrinetable = [];
+			for(var i =0;i<data.length; i++)
+			{
+				if(JSON.stringify(data[i]).includes("refreshes in"))
+				{
+					shrinetable = data[i];
+				}
+				else
+				{
+					console.log(data[i].toString());
+				}
+			}
+
 			var shrine = [];
 			shrine[0] = getDetails(shrinetable[0],message);
 			shrine[1] = getDetails(shrinetable[1],message);
