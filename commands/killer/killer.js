@@ -63,5 +63,7 @@ module.exports = class KillerCommand extends Command {
 		message.channel.send(embed).catch((error) => {
 			message.author.send(embed).catch();
 		});
+
+		sql.close();
 	}
 };
